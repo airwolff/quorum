@@ -1,6 +1,5 @@
 app.controller('AdminController', ['$http', function ($http) {
 	console.log('admin is running');
-	var myApp = angular.module("myApp", []);
 
 	var self = this;
 	self.newArticle = {};
