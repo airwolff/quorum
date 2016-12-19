@@ -8,7 +8,7 @@ app.controller('ProfileController', ['$http', function ($http) {
 	getProfileArticles();
 
 	function getProfileArticles() {
-		$http.get('/insertArticle')
+		$http.get('/getArticle')
 			.then(function (response) {
 				console.log(response.data);
 				self.articles = response.data;
