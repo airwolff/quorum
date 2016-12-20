@@ -25,7 +25,7 @@ app.controller("AllController", ["$http", "AuthFactory", function ($http, AuthFa
 	self.logOut = function () {
 		console.log('this is logout');
 		AuthFactory.logOut();
-	}
+	};
 
 	function getCurrentUser() {
 		currentUser = AuthFactory.currentUser();

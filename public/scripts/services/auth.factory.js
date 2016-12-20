@@ -14,15 +14,13 @@ app.factory('AuthFactory', ["$http", "$firebaseAuth", function ($http, $firebase
 			console.log("Authentication failed: ", error);
 		});
 
-	};
+	}
 
 	function getCurrentUser() {
 		return currentUser;
 	}
 
-	// This code runs whenever the user changes authentication states
-	// e.g. whevenever the user logs in or logs out
-	//
+
 	auth.$onAuthStateChanged(function (firebaseUser) {
 		// firebaseUser will be null if not logged in
 		currentUser = firebaseUser;
@@ -38,8 +36,7 @@ app.factory('AuthFactory', ["$http", "$firebaseAuth", function ($http, $firebase
 						}
 					})
 					.then(function (userExists) {
-						//console.log("USER RESPONSE:", userExists.data);
-						if (userExists.data == false) {
+						if (userExists.data === false) {
 							return $http({
 									method: 'POST',
 									url: '/users',
@@ -63,7 +60,7 @@ app.factory('AuthFactory', ["$http", "$firebaseAuth", function ($http, $firebase
 		auth.$signOut().then(function () {
 			console.log('Logging the user out!');
 		});
-	};
+	}
 
 	var userData = {
 		logIn: function () {
@@ -78,7 +75,7 @@ app.factory('AuthFactory', ["$http", "$firebaseAuth", function ($http, $firebase
 		currentUserId: function () {
 			return currentUserId;
 		}
-	}
+	};
 
 	return userData;
 
