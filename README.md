@@ -2,9 +2,7 @@
 
 Add a connection to firebase on your front end
 
-Navigate to the Service Accounts tab in your project's settings page. Select your Firebase project. Copy your databaseURL from the Admin SDK configuration snippet. The line you need will look like this: databaseURL: . Navigate to the server/modules/decoder.js file in the node project and replace the databaseURL. Only replace that line. It is inside of the admin.initializeApp:
-
-admin.initializeApp({ credential: admin.credential.cert("./server/firebase-service-account.json"), databaseURL: "<https://XXXXXXXXX.firebaseio.com>" // replace this line with your URL }); Return to firebase Service Accounts. Navigate to your project again if you have left it. Click the Generate New Private Key button at the bottom of the Firebase Admin SDK section of the Service Accounts tab. Rename the new JSON file to firebase-service-account.json and save it in the server folder of your application. Return to Firebase console. Configure Google as an authentication provider for your Firebase project.
+Click the Generate New Private Key button at the bottom of the Firebase Admin SDK section of the Service Accounts tab. Rename the new JSON file to firebase-service-account.json and save it in the server folder of your application. Return to Firebase console. Configure Google as an authentication provider for your Firebase project.
 
 In the Firebase console for your project (you may already be there from the previous step), click "Authentication" in left panel Click "Set Up Sign-In Method" button Select "Google" Click the "edit" icon Toggle Google to on Connect the application to your database
 

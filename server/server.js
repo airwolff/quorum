@@ -1,6 +1,7 @@
 var express = require('express');
 var app = express();
 var path = require('path');
+var decoder = require('./modules/decoder');
 var bodyParser = require('body-parser');
 var getArticle = require('./routes/getArticle');
 var insertArticle = require('./routes/insertArticle');
@@ -11,6 +12,7 @@ app.use(bodyParser.urlencoded({
 	extended: true
 }));
 app.use(bodyParser.json());
+app.use(decoder.token);
 
 //routing modules
 app.use('/getArticle', getArticle);
