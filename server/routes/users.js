@@ -7,24 +7,20 @@ var pool = new pg.Pool({
 });
 
 router.get('/', function (req, res) {
-	console.log('ARRIVED IN USERS GET!');
 	var userEmail = req.decodedToken.email;
 	var userExists;
-	console.log('USER EMAIL:', userEmail);
-	pg.connect(connectionString, function (err, client, done) {
+	pool.connect().then (function (err, client, done) {
 		if (err) {
-			console.log('connection error: ', err);
+			console.log('users.js connection error: ', err);
 			res.sendStatus(500);
 		} else {
 			client.query('SELECT * FROM users WHERE email = $1', [userEmail],
 				function (err, result) {
-					done(); // close the connection.
-
+					done();
 					if (err) {
-						console.log('select query error: ', err);
+						console.log('users.js select query error: ', err);
 						res.sendStatus(500);
 					}
-					console.log('Length of rows:', result.rows.length);
 					userExists = result.rows.length > 0;
 					res.send(userExists);
 				});
@@ -35,7 +31,7 @@ router.get('/', function (req, res) {
 router.post('/', function (req, res) {
 	console.log('POST SUCCESSFUL');
 	var userEmail = req.decodedToken.email;
-	pg.connect(connectionString, function (err, client, done) {
+	pool.connect().then (function (err, client, done) {
 		if (err) {
 			console.log('connection error: ', err);
 			res.sendStatus(500);
@@ -47,15 +43,13 @@ router.post('/', function (req, res) {
 				done();
 
 				if (err) {
-					console.log('insert query error: ', err);
+					console.log('users.js insert query error: ', err);
 					res.sendStatus(500);
 				} else {
 					res.sendStatus(201);
 				}
 			});
-
 	});
-
 });
 
 module.exports = router;
