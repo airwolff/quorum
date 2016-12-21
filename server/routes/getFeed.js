@@ -40,7 +40,11 @@ var cronJob = cron.job("*/10 * * * * *", function (err, collection) {
 										var meta = this.meta;
 										var item;
 										while (item = stream.read())
+										// insert query?
 									});
+
+									console.log('here');
+
 								})
 								.catch(function (err) {
 									client.release();

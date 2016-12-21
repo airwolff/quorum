@@ -7,6 +7,7 @@ var pool = new pg.Pool({
 });
 
 router.get('/', function (req, res) {
+
 	pool.connect()
 		.then(function (client) {
 			// make query

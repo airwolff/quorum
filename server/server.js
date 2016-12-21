@@ -4,8 +4,9 @@ var path = require('path');
 var bodyParser = require('body-parser');
 var decoder = require('./modules/decoder');
 // var getFeed = require('./routes/getFeed');
+// var getProfileArticles = require('./routes/getProfileArticles')
 var users = require('./routes/users.js');
-var getArticle = require('./routes/getArticle');
+var getAllArticles = require('./routes/getAllArticles');
 var insertArticle = require('./routes/insertArticle');
 var portDecision = process.env.PORT || 3000;
 
@@ -15,17 +16,22 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(bodyParser.json());
 
-app.use(express.static(path.resolve('./public/views')));
+app.use(express.static(path.resolve('./public/')));
 
 app.get('/', function (req, res) {
-	res.sendFile(path.join(__dirname, './public/views/index.html'));
+	res.sendFile(path.join(__dirname, '../public/views/index.html'));
 });
 
+app.use('/getAllArticles', getAllArticles);
+
+// decode the token
 app.use(decoder.token);
 
+// any route after this is 'protected'
+//
 //routing modules
-app.use('/getArticle', getArticle);
 app.use('/insertArticle', insertArticle);
+// app.use('/igetProfileArticles', getProfileArticlesArticles);
 app.use('/users', users);
 
 app.listen(portDecision, function () {

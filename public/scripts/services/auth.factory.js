@@ -1,7 +1,7 @@
 app.factory('AuthFactory', ["$http", "$firebaseAuth", function ($http, $firebaseAuth) {
 	var auth = $firebaseAuth();
 	var self = this;
-	var currentUser = {};
+	var currentUser;
 	var currentUserId = 1;
 
 	// This code runs whenever the user logs in
@@ -17,29 +17,26 @@ app.factory('AuthFactory', ["$http", "$firebaseAuth", function ($http, $firebase
 	function getCurrentUser() {
 		return currentUser;
 	}
+
 	// This code runs whenever the user changes authentication states
 	// e.g. whevenever the user logs in or logs out
-	//
 	auth.$onAuthStateChanged(function (firebaseUser) {
-		// firebaseUser will be null if not logged in
 		currentUser = firebaseUser;
 		console.log('currentUser:', currentUser);
 		if (currentUser) {
 			firebaseUser.getToken().then(function (idToken) {
-				//console.log('ID TOKEN:', idToken)
 				$http({
 						method: 'GET',
-						url: '/users',
+						url: '../../../server/routes/users.js',
 						headers: {
 							id_token: idToken
 						}
 					})
 					.then(function (userExists) {
-						//console.log("USER RESPONSE:", userExists.data);
 						if (userExists.data == false) {
 							return $http({
 									method: 'POST',
-									url: '/users',
+									url: '../../../server/routes/users.js',
 									headers: {
 										id_token: idToken
 									}

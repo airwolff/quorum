@@ -4,9 +4,13 @@
     <head>
         <title>Quorum</title>
 
+        <!-- CSS -->
+        <link rel="stylesheet" href="../styles/normalize.css" />
+        <link rel="stylesheet" href="../styles/bootstrap.min.css">
+        <link rel="stylesheet" href="../styles/style.css" />
+
         <!-- Angular  -->
         <script type="text/javascript" src="../vendor/angular.min.js"></script>
-        <script type="text/javascript" src="../vendor/angular-route.min.js"></script>
 
         <!-- Firebase -->
         <script src="https://www.gstatic.com/firebasejs/3.6.0/firebase.js"></script>
@@ -16,6 +20,9 @@
 
         <!-- Firebase Config -->
         <script type="text/javascript" src="../scripts/config.js"></script>
+
+        <!-- angular-route -->
+        <script type="text/javascript" src="../vendor/angular-route.min.js"></script>
 
         <!-- App with Authentication -->
         <script type="text/javascript" src="../scripts/client.js"></script>
@@ -31,16 +38,13 @@
 
         <!-- Services -->
         <script src="../scripts/services/auth.factory.js" type="text/javascript"></script>
-
-        <!-- CSS -->
-        <link rel="stylesheet" href="../styles/normalize.css" />
-        <link rel="stylesheet" href="../styles/bootstrap.min.css">
-        <link rel="stylesheet" href="../styles/style.css" />
     </head>
 
     <body ng-app="app">
         <h1>Quorum</h1>
-        <div ng-include="'/templates/nav.html'"></div>
+        <div ng-include="'views/templates/nav.html'"></div>
+        <!-- <button ng-click="all.logIn()">Log In</button>
+        <button ng-click="all.logOut()">Log Out</button> -->
         <main ng-view></main>
     </body>
 

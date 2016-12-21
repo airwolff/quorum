@@ -1,4 +1,4 @@
-app.controller('AdminController', ['$http', function ($http) {
+app.controller('AdminController', ["$http", "AuthFactory", function ($http, AuthFactory, $firebaseAuth) {
 	console.log('admin is running');
 
 	var self = this;
@@ -23,4 +23,19 @@ app.controller('AdminController', ['$http', function ($http) {
 				getArticles();
 			});
 	};
+
+	self.logIn = function () {
+		console.log('login button');
+		AuthFactory.logIn();
+	};
+
+	self.logOut = function () {
+		console.log('logout button');
+		AuthFactory.logOut();
+	};
+
+	function getCurrentUser() {
+		currentUser = AuthFactory.currentUser();
+	}
+
 	}]);
