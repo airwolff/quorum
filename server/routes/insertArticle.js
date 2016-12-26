@@ -13,8 +13,8 @@ router.post('/', function (req, res) {
 			// make query
 			console.log("newArticle", newArticle);
 			client.query(
-					'INSERT INTO article (title, link, description, category, guid) ' +
-					'VALUES ($1, $2, $3, $4, $5)', [newArticle.title, newArticle.link, newArticle.description, newArticle.category, newArticle.guid])
+					'INSERT INTO article (contentSnippet, guid, link, title, category) ' +
+					'VALUES ($1, $2, $3, $4, $5)', [newArticle.contentSnippet, newArticle.guid, newArticle.link, newArticle.title, newArticle.category])
 				.then(function (result) {
 					client.release();
 					res.sendStatus(201);

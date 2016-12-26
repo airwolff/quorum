@@ -1,11 +1,14 @@
+require('@risingstack/trace');
+
+// your application's code
 var express = require('express');
 var app = express();
 var path = require('path');
 var bodyParser = require('body-parser');
-var decoder = require('./modules/decoder');
-// var getFeed = require('./routes/getFeed');
+// var decoder = require('./modules/decoder');
+var getFeed = require('./routes/getFeed');
 // var getProfileArticles = require('./routes/getProfileArticles')
-var users = require('./routes/users.js');
+// var users = require('./routes/users.js');
 var getAllArticles = require('./routes/getAllArticles');
 var insertArticle = require('./routes/insertArticle');
 var portDecision = process.env.PORT || 3000;
@@ -23,16 +26,17 @@ app.get('/', function (req, res) {
 });
 
 app.use('/getAllArticles', getAllArticles);
+app.use('/getFeed', getFeed);
 
 // decode the token
-app.use(decoder.token);
+// app.use(decoder.token);
 
 // any route after this is 'protected'
 //
 //routing modules
 app.use('/insertArticle', insertArticle);
-// app.use('/igetProfileArticles', getProfileArticlesArticles);
-app.use('/users', users);
+// app.use('/getProfileArticles', getProfileArticles);
+// app.use('/users', users);
 
 app.listen(portDecision, function () {
 	console.log('running on port', portDecision);

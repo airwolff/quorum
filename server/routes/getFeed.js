@@ -1,60 +1,49 @@
 var router = require('express').Router();
 var pg = require('pg');
-var feed = require('feedparser');
 var request = require('request');
-var cron = require('cron');
+var parser = require('rss-parser');
+var cron = require('node-cron');
+// var spide = require('rssspider');
 var config = require('../config/dbconfig');
 
 var pool = new pg.Pool({
 	database: config.database
 });
 
-var cronJob = cron.job("*/10 * * * * *", function (err, collection) {
-			if (err) {
-				console.log('Error in GET: ', err);
-			} else {
-				router.get('/', function (req, res) {
-					pool.connect()
-						.then(function (client) {
-							client.query(
-									'SELECT * FROM rss_url')
-								.then(function (result) {
-									console.log('getFeed result ', result);
-									client.release();
-									var req = request(result);
-									var feedparser = new feed([]);
-
-									req.on('error', function (error) {
-										console.log('feedparser error line 28 ', error);
-									});
-									req.on('response', function (res) {
-										var stream = this;
-										if (res.statusCode != 200) return this.emit('error', new Error('Bad status code'));
-										stream.pipe(feedparser);
-									});
-									feedparser.on('error', function (error) {
-										console.log('feedparser error line 34 ', error);
-									});
-									feedparser.on('readable', function () {
-										var stream = this;
-										var meta = this.meta;
-										var item;
-										while (item = stream.read())
-										// insert query?
-									});
-
-									console.log('here');
-
-								})
-								.catch(function (err) {
-									client.release();
-									res.sendStatus(500);
+// var url;
+cron.schedule('* * * * *', function () {
+	router.get('/', function (req, res) {
+		pool.connect()
+			.then(function (client) {
+				// make query
+				client.query(
+						'SELECT * FROM rss_url;')
+					.then(function (result) {
+						client.release();
+						result.forEach(function (rss) {
+							parser.parseURL(rss, function (err, parsed) {
+								console.log('parsed.feed ', parsed.feed);
+								parsed.feed.entries.forEach(function (entry) {
+									console.log('entry ', entry);
+									client.query(
+										'INSERT INTO article (contentSnippet, guid, link, title, category) ' +
+										'VALUES ($1, $2, $3, $4, $5)', [entry.contentSnippet, entry.guid, entry.link, entry.title, entry.category])
 								});
+							});
 						});
-				});
-			}
-		);
+					})
+					.catch(function (err) {
+						// error
+						client.release();
+						console.log('error on SELECT', err);
+						res.sendStatus(500);
+					});
+			});
+	});
+});
 
-		cronJob.start();
+// spide.fetchRss(url).then(function (data) {
+// 	console.log(data); // rss  post list
+// });
 
-		module.exports = router;
+module.exports = router;

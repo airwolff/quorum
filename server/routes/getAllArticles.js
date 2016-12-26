@@ -7,12 +7,11 @@ var pool = new pg.Pool({
 });
 
 router.get('/', function (req, res) {
-
 	pool.connect()
 		.then(function (client) {
 			// make query
 			client.query(
-					'SELECT * FROM article;')
+					'SELECT * FROM test_article;')
 				.then(function (result) {
 					client.release();
 					res.send(result.rows);

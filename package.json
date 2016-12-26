@@ -1,37 +1,36 @@
 {
-  "name": "aggregate",
-  "version": "1.0.0",
-  "description": "",
-  "main": "server/server.js",
-  "dependencies": {
-    "angular": "^1.6.0",
-    "angular-route": "^1.6.0",
-    "angularfire": "^2.1.0",
-    "body-parser": "^1.15.2",
-    "cron": "^1.2.1",
-    "express": "^4.14.0",
-    "feedparser": "^1.1.5",
-    "firebase-admin": "^4.0.4",
-    "pg": "^6.1.0",
-    "request": "^2.79.0",
-    "send": "^0.14.1"
-  },
-  "devDependencies": {},
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "server/server.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/airwolff/aggregate.git"
-  },
-  "author": "andy",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/airwolff/aggregate/issues"
-  },
-  "homepage": "https://github.com/airwolff/aggregate#readme",
-  "directories": {
-    "test": "test"
-  }
+    "name": "aggregate",
+    "version": "1.0.0",
+    "description": "",
+    "main": "server/server.js",
+    "dependencies": {
+        "angular": "^1.6.0",
+        "angular-route": "^1.6.0",
+        "angularfire": "^2.1.0",
+        "body-parser": "^1.15.2",
+        "express": "^4.14.0",
+        "firebase-admin": "^4.0.4",
+        "pg": "^6.1.0",
+        "request": "^2.79.0",
+        "rss-parser": "^2.5.2",
+        "send": "^0.14.1"
+    },
+    "devDependencies": {},
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "server/server.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/airwolff/aggregate.git"
+    },
+    "author": "andy",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/airwolff/aggregate/issues"
+    },
+    "homepage": "https://github.com/airwolff/aggregate#readme",
+    "directories": {
+        "test": "test"
+    }
 }

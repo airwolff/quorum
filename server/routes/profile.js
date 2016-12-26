@@ -16,7 +16,7 @@ router.get('/', function (req, res) {
 			// make query
 			console.log("newArticle", newArticle);
 			client.query(
-					'INSERT INTO article (title, link, description, category, guid) ' +
+					'SELECT FROM users (title, link, description, category, guid) ' +
 					'VALUES ($1, $2, $3, $4, $5)', [newArticle.title, newArticle.link, newArticle.description, newArticle.category, newArticle.guid])
 				.then(function (result) {
 					client.release();
