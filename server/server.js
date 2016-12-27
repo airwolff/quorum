@@ -1,6 +1,3 @@
-require('@risingstack/trace');
-
-// your application's code
 var express = require('express');
 var app = express();
 var path = require('path');
