@@ -2,6 +2,8 @@
     <ul ng-repeat="article in all.articles">
         <li ng-model="article.title">
             {{article.title}}
+
         </li>
     </ul>
+    <button ng-click="all.getFeed()">Get</button>
 </div>
