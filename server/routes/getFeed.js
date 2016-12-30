@@ -2,14 +2,14 @@ var router = require('express').Router();
 var pg = require('pg');
 var request = require('request');
 var spide = require('rssspider');
-var CronJob = require('cron').CronJob;
+var cron = require('cron');
 var config = require('../config/dbconfig');
 
 var pool = new pg.Pool({
 	database: config.database
 });
 
-var job = new CronJob('* 5 * * * *', function() {
+var cronJob = cron.job("* * * * * *", function () {
 
 router.get('/', function (req, res) {
 	pool.connect()
@@ -39,8 +39,8 @@ router.get('/', function (req, res) {
 				});
 		});
 });
-}, false);
+});
 
-job.start();
+cronJob.start();
 
 module.exports = router;
