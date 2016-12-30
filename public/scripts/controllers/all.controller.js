@@ -5,9 +5,12 @@ app.controller("AllController", ["$http", "AuthFactory", function ($http, AuthFa
 	var self = this;
 	self.newArticle = {};
 	self.articles = [];
+	// self.feed = {};
+	// self.allFeeds = [];
 	// var currentUser;
 
 	getAllArticles();
+	// getFeeds();
 
 	// read only
 	function getAllArticles() {
@@ -18,13 +21,22 @@ app.controller("AllController", ["$http", "AuthFactory", function ($http, AuthFa
 			});
 	}
 
-	self.getFeed = function () {
-		console.log('click');
-		$http.get('/getFeed')
-			.then(function (response) {
-				console.log('clicke get ', response.data);
-				self.url = response.data;
-			});
-	}
+	// 	function getFeeds() {
+	// 	$http.get("/getFeed")
+	// 		.then(function (response) {
+	// 			console.log(response.data);
+	// 			self.allFeeds = response.data;
+	// 		});
+	// }
+
+	// self.getFeed = function () {
+	// 	console.log('click');
+	// 	$http.get('/getFeed')
+	// 		.then(function (response) {
+	// 			console.log('clicke get ', response.data);
+	// 			self.allFeeds = response.data;
+	// 		});
+	// 		getFeeds(); 
+	// };
 
 }]);

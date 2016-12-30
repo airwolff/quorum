@@ -11,11 +11,13 @@
     "angular-route": "^1.6.0",
     "angularfire": "^2.1.0",
     "body-parser": "^1.15.2",
+    "cron": "^1.2.1",
     "express": "^4.14.0",
     "firebase-admin": "^4.0.4",
     "pg": "^6.1.0",
     "request": "^2.79.0",
     "rss-parser": "^2.5.2",
+    "rssspider": "^1.4.3",
     "send": "^0.14.1"
   },
   "devDependencies": {},
