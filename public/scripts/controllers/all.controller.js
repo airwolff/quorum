@@ -5,12 +5,9 @@ app.controller("AllController", ["$http", "AuthFactory", function ($http, AuthFa
 	var self = this;
 	self.newArticle = {};
 	self.articles = [];
-	// self.feed = {};
-	// self.allFeeds = [];
-	// var currentUser;
 
 	getAllArticles();
-	getFeeds();
+	// getFeeds();
 
 	// read only
 	function getAllArticles() {
@@ -36,7 +33,7 @@ app.controller("AllController", ["$http", "AuthFactory", function ($http, AuthFa
 				console.log('clicke get ', response.data);
 				self.allFeeds = response.data;
 			});
-			getFeeds(); 
+			getFeeds();
 	};
 
 }]);

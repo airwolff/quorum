@@ -1,13 +1,7 @@
-<div class="list">
+<div class="collapsible popout" data-collapsible="accordion" watch>
     <ul ng-repeat="article in all.articles">
         <li ng-model="article.title">
             {{article.title}}
         </li>
     </ul>
-    <ul ng-repeat="feed in all.allFeeds">
-        <li ng-model="feed.entry">
-            {{feed.entry}}
-        </li>
-    </ul>
-    <!--<button ng-click="all.getFeed()">Get</button>-->
 </div>
