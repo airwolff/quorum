@@ -1,4 +1,4 @@
-var app = angular.module('app', ['ngRoute', 'firebase', 'ui.materialize']);
+var app = angular.module('app', ['ngRoute', 'firebase', 'ui.materialize', 'ngSanitize']);
 app.config(['$routeProvider', function ($routeProvider) {
 	$routeProvider
 		.when('/admin', {
@@ -40,3 +40,6 @@ app.config(['$routeProvider', function ($routeProvider) {
 			redirectTo: 'all'
 		});
 }, ]);
+
+
+app.filter()

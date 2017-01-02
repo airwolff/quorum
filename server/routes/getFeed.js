@@ -2,7 +2,7 @@ var router = require('express').Router();
 var pg = require('pg');
 var request = require('request');
 var spide = require('rssspider');
-var htmlText = require('html-to-text');
+// var htmlText = require('html-to-text');
 //var cron = require('cron');
 var config = require('../config/dbconfig');
 
@@ -44,12 +44,12 @@ var pool = new pg.Pool({
 //});
 
 
-htmlToText.data.summary(path.join(__dirname, 'test.html'), {
-    tables: ['#invoice', '.address']
-}, (err, text) => {
-    if (err) return console.error(err);
-    console.log(text);
-});
+// htmlToText.data.summary(path.join(__dirname, 'test.html'), {
+//     tables: ['#invoice', '.address']
+// }, (err, text) => {
+//     if (err) return console.error(err);
+//     console.log(text);
+// });
 
 //cronJob.start();
 
