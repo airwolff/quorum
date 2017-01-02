@@ -11,7 +11,7 @@ router.get('/', function (req, res) {
 		.then(function (client) {
 			// make query
 			client.query(
-					'SELECT * FROM test_article;')
+					'SELECT * FROM article;')
 				.then(function (result) {
 					client.release();
 					res.send(result.rows);

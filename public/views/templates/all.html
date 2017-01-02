@@ -1,7 +1,8 @@
-<div class="collapsible popout" data-collapsible="accordion" watch>
-    <ul ng-repeat="article in all.articles">
-        <li ng-model="article.title">
-            {{article.title}}
-        </li>
-    </ul>
-</div>
+÷
+
+<ul class="collapsible popout" data-collapsible="accordion" watch>
+    <li ng-repeat="article in all.articles">
+        <div class="collapsible-header"><i class="{{single.icon}}"></i>{{article.title}}</div>
+        <div class="collapsible-body">{{article.summary}}</div>
+    </li>
+</ul>

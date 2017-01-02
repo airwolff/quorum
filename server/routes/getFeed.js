@@ -2,6 +2,7 @@ var router = require('express').Router();
 var pg = require('pg');
 var request = require('request');
 var spide = require('rssspider');
+var htmlText = require('html-to-text');
 //var cron = require('cron');
 var config = require('../config/dbconfig');
 
@@ -22,6 +23,7 @@ var pool = new pg.Pool({
 						result.rows.forEach(function (item, index) {
 							spide.fetchRss(item.url).then(function (data) {
 								console.log(data);
+
 								data.forEach(function (item, index) {
 									client.query(
 										'INSERT INTO article (guid, link, title, category, summary) ' +
@@ -40,6 +42,14 @@ var pool = new pg.Pool({
 			});
 	});
 //});
+
+
+htmlToText.data.summary(path.join(__dirname, 'test.html'), {
+    tables: ['#invoice', '.address']
+}, (err, text) => {
+    if (err) return console.error(err);
+    console.log(text);
+});
 
 //cronJob.start();
 

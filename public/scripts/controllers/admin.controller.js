@@ -1,4 +1,4 @@
-app.controller('AdminController', ["$http", "AuthFactory", function ($http) { //AuthFactory, $firebaseAuth
+app.controller('AdminController', ["$http", "AuthFactory", function ($http, AuthFactory) { //AuthFactory, $firebaseAuth
 	console.log('admin is running');
 
 	var self = this;

@@ -1,4 +1,4 @@
-app.controller("AllController", ["$http", "AuthFactory", function ($http, AuthFactory, $firebaseAuth) {
+app.controller("AllController", ["$http", "AuthFactory", "$firebaseAuth", function ($http, AuthFactory, $firebaseAuth) {
 	console.log("all is running");
 
 
@@ -37,3 +37,9 @@ app.controller("AllController", ["$http", "AuthFactory", function ($http, AuthFa
 	};
 
 }]);
+
+app.filter('stripTags', function() {
+	return function(text) {
+		return  text ? String(text).replace(/<[^>]+>/gm, '') : '';
+	};
+});
