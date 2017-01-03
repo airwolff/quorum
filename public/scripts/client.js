@@ -1,4 +1,4 @@
-var app = angular.module('app', ['ngRoute', 'firebase', 'ui.materialize', 'ngSanitize']);
+var app = angular.module('app', ['ngRoute', 'firebase', 'ui.materialize', 'ngSanitize', 'ngMaterial']);
 app.config(['$routeProvider', function ($routeProvider) {
 	$routeProvider
 		.when('/admin', {
