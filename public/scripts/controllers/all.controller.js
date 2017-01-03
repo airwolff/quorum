@@ -1,4 +1,4 @@
-app.controller("AllController", ["$http", "AuthFactory", "$firebaseAuth", "$mdSidenav", function ($http, AuthFactory, $firebaseAuth, $mdSidenav) {
+app.controller("AllController", ["$http", "AuthFactory", "$firebaseAuth", function ($http, AuthFactory, $firebaseAuth) {
 	console.log("all is running");
 
 
@@ -6,16 +6,8 @@ app.controller("AllController", ["$http", "AuthFactory", "$firebaseAuth", "$mdSi
 	self.newArticle = {};
 	self.articles = [];
 
-	$scope.toggleLeft = buildToggler('left');
-
 	getAllArticles();
 	// getFeeds();
-
-function buildToggler(componentId) {
-      return function() {
-        $mdSidenav(componentId).toggle();
-      }
-    }
 
 	// read only
 	function getAllArticles() {
