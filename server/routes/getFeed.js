@@ -4,9 +4,7 @@ var request = require('request');
 var spide = require('rssspider');
 var config = require('../config/dbconfig');
 
-var pool = new pg.Pool({
-	database: config.database
-});
+var pool = new pg.Pool(config.pg);
 
 	router.get('/', function (req, res) {
 		pool.connect()
