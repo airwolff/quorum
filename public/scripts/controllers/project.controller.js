@@ -1,4 +1,4 @@
-app.controller('ProjectController', ['$http', function ($http) {
-	console.log('Project up and running');
+// app.controller('ProjectController', ['$http', function ($http) {
+// 	console.log('Project up and running');
 
-        }]);
+//         }]);

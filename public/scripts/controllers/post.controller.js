@@ -1,4 +1,4 @@
-app.controller('PostController', ['$http', function ($http) {
-	console.log('Post up and running');
+// app.controller('PostController', ['$http', function ($http) {
+// 	console.log('Post up and running');
 
-        }]);
+//         }]);
