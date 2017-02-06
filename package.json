@@ -1,5 +1,5 @@
 {
-  "name": "aggregate",
+  "name": "quorum",
   "version": "1.0.0",
   "description": "",
   "main": "server/server.js",
@@ -11,29 +11,27 @@
     "angular-sanitize": "^1.6.1",
     "angularfire": "^2.1.0",
     "body-parser": "^1.15.2",
-    "cron": "^1.2.1",
     "express": "^4.14.0",
     "firebase-admin": "^4.0.4",
-    "html-to-text": "^3.0.0",
     "pg": "^6.1.0",
     "request": "^2.79.0",
-    "rss-parser": "^2.5.2",
     "rssspider": "^1.4.3",
     "send": "^0.14.1"
   },
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "server/server.js"
+    "start": "server/server.js",
+    "test": "nodemon server/server.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/airwolff/aggregate.git"
+    "url": "git+https://github.com/airwolff/quorum.git"
   },
   "author": "andy",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/airwolff/aggregate/issues"
+    "url": "https://github.com/airwolff/quorum/issues"
   },
   "homepage": "https://github.com/airwolff/aggregate#readme",
   "directories": {
