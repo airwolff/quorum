@@ -6,11 +6,11 @@ var spide = require('rssspider');
 //var cron = require('cron');
 var config = require('../config/dbconfig');
 
-var pool = new pg.Pool({
-	database: config.database
-});
+// var pool = new pg.Pool({
+// 	database: config.database
+// });
 
-//var cronJob = cron.job("* * * * * *", function () {
+var pool = new pg.Pool(config.pg);
 
 	router.get('/', function (req, res) {
 		pool.connect()
@@ -41,16 +41,5 @@ var pool = new pg.Pool({
 					});
 			});
 	});
-//});
-
-
-// htmlToText.data.summary(path.join(__dirname, 'test.html'), {
-//     tables: ['#invoice', '.address']
-// }, (err, text) => {
-//     if (err) return console.error(err);
-//     console.log(text);
-// });
-
-//cronJob.start();
 
 module.exports = router;

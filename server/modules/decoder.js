@@ -3,10 +3,11 @@ var pg = require('pg');
 var admin = require("firebase-admin");
 var config = require('../config/dbconfig');
 
-var pool = new pg.Pool({
-	database: config.database
-});
+// var pool = new pg.Pool({
+// 	database: config.database
+// });
 
+var pool = new pg.Pool(config.pg);
 
 admin.initializeApp({
 	credential: admin.credential.cert("./server/firebase-service-account.json"),
